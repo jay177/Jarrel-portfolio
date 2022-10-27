@@ -213,17 +213,4 @@ h2 {
   transition: opacity 1s;
 }
 
-.icons {
-  position: absolute;
-  fill: #fff;
-  color: #fff;
-  height: 130px;
-  top: 226px;
-  width: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-}
-
 /*# sourceMappingURL=index.css.map */

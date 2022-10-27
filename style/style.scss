@@ -185,6 +185,8 @@ svg {
   align-items: center;
   position: relative;
   margin: 30px;
+
+  
 }
 .card0{
   background: url("img/my.jpg") center center no-repeat;
@@ -228,16 +230,4 @@ h2{
 .fa{
   opacity: 0;
   transition: opacity 1s;
-}
-.icons{
-  position: absolute;
-  fill: #fff;
-  color: #fff;
-  height: 130px;
-  top: 226px;
-  width: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
 }
