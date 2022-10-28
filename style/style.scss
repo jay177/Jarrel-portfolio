@@ -20,6 +20,9 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+ 
+    
+
 }
 
 // gsap transition
@@ -139,6 +142,7 @@ svg {
   object-fit: cover;
   background-position: center;
   background-size: 100% ;
+
 }
 
 
@@ -158,6 +162,18 @@ svg {
   align-items: center;
   margin: 0 auto;
   padding-left: 40vh;
+
+  @media screen and (max-width: 768px) {
+    flex-wrap : wrap;
+    display: block;
+    max-width: 768px;
+    
+    
+
+ 
+    
+
+  }
 }
 .border{
   height: 369px;
@@ -170,6 +186,7 @@ svg {
   &:hover{
     border: 1px solid white
   } 
+  
 }
 .card{
   height: 379px;
@@ -185,6 +202,17 @@ svg {
   align-items: center;
   position: relative;
   margin: 30px;
+
+  @media screen and (max-width: 768px) {
+   margin: O;
+   margin-bottom: 5px;
+ 
+    
+
+  }
+
+  
+  
 
   
 }

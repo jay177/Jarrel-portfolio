@@ -141,6 +141,13 @@ svg {
   margin: 0 auto;
   padding-left: 40vh;
 }
+@media screen and (max-width: 768px) {
+  .container {
+    flex-wrap: wrap;
+    display: block;
+    max-width: 768px;
+  }
+}
 
 .border {
   height: 369px;
@@ -168,6 +175,12 @@ svg {
   align-items: center;
   position: relative;
   margin: 30px;
+}
+@media screen and (max-width: 768px) {
+  .card {
+    margin: O;
+    margin-bottom: 5px;
+  }
 }
 
 .card0 {
