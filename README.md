@@ -12,3 +12,8 @@ sass --watch style/style.scss index.css
 ```
 
 i deploy my project whit vercel witch alow my to just deploy my project base on my github repository i just need to link github and vercel and choose whitch project i want to deploy 
+
+i setup checky for automaticly update my website when i commit something 
+i also setup code factor that check code error like duplicated code 
+and gitBook whit this i can make a doc like a book 
+

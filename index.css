@@ -9,7 +9,7 @@ a {
 }
 
 body {
-  background-color: #A2BEC9;
+  background-color: #282F33;
 }
 
 .j {
@@ -199,11 +199,11 @@ svg {
 }
 
 .card1 {
-  background: url("https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80") center center no-repeat;
+  background: url("https://images.unsplash.com/photo-1526925539332-aa3b66e35444?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1065&q=80") center center no-repeat;
   background-size: 300px;
 }
 .card1:hover {
-  background: url("https://images.unsplash.com/photo-1517976487492-5750f3195933?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80") left center no-repeat;
+  background: url("https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80") left center no-repeat;
   background-size: 600px;
 }
 .card1 h2 {
@@ -215,7 +215,7 @@ svg {
 
 h2 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: white;
+  color: #FFF;
   margin: 20px;
   opacity: 0;
   transition: opacity 1s;
