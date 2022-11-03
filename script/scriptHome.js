@@ -1,73 +1,182 @@
+const musicContainer = document.getElementById('music-container');
+const playBtn = document.getElementById('play');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
 
+const audio = document.getElementById('audio');
+const progress = document.getElementById('progress');
+const progressContainer = document.getElementById('progress-container');
+const title = document.getElementById('title');
+const cover = document.getElementById('cover');
+const currTime = document.querySelector('#currTime');
+const durTime = document.querySelector('#durTime');
 
+// Song titles
+const songs = ['Thought-It-Was-a-Drought', '60-annees', 'sky-priority'];
 
-let hero = document.getElementById('hero-slides');
-let menu = document.getElementById('menu');
-let slides = document.getElementById('slides');
-let dribbble = document.getElementById('dribbble');
-let next = [ 'next', 'next-catch' ].map(n => document.getElementById(n));
-let prev = [ 'prev', 'prev-catch' ].map(n => document.getElementById(n));
-let slideChildren = slides.children;
-let slideCount = slides.children.length;
-let currentlyDemoing = false;
-let currentPage = 0;
-let slidesPerPage = () => window.innerWidth > 1700 ? 4 : window.innerWidth > 1200 ? 3 : 2;
-let maxPageCount = () => slideCount / slidesPerPage() - 1;
+// Keep track of song
+let songIndex = 2;
 
-function goToPage(pageNumber = 0) {
-	currentPage = Math.min(maxPageCount(), Math.max(0, pageNumber));
-	console.log(currentPage);
-	hero.style.setProperty('--page', currentPage);
+// Initially load song details into DOM
+loadSong(songs[songIndex]);
+
+// Update song details
+function loadSong(song) {
+  title.innerText = song;
+  audio.src = `img/${song}.mp3`;
+  cover.src = `img/${song}.jpg`;
 }
 
-function sleep(time) {
-	return new Promise(res => setTimeout(res, time));
+// Play song
+function playSong() {
+  musicContainer.classList.add('play');
+  playBtn.querySelector('i.fas').classList.remove('fa-play');
+  playBtn.querySelector('i.fas').classList.add('fa-pause');
+
+  audio.play();
 }
 
-function hoverSlide(index) {
-	index in slideChildren &&
-		slideChildren[index].classList.add('hover');
+// Pause song
+function pauseSong() {
+  musicContainer.classList.remove('play');
+  playBtn.querySelector('i.fas').classList.add('fa-play');
+  playBtn.querySelector('i.fas').classList.remove('fa-pause');
+
+  audio.pause();
 }
 
-function unhoverSlide(index) {
-	index in slideChildren &&
-		slideChildren[index].classList.remove('hover');
+// Previous song
+function prevSong() {
+  songIndex--;
+
+  if (songIndex < 0) {
+    songIndex = songs.length - 1;
+  }
+
+  loadSong(songs[songIndex]);
+
+  playSong();
 }
 
-async function demo() {
+// Next song
+function nextSong() {
+  songIndex++;
 
-	currentlyDemoing = true;
+  if (songIndex > songs.length - 1) {
+    songIndex = 0;
+  }
+
+  loadSong(songs[songIndex]);
+
+  playSong();
+}
+
+// Update progress bar
+function updateProgress(e) {
+  const { duration, currentTime } = e.srcElement;
+  const progressPercent = (currentTime / duration) * 100;
+  progress.style.width = `${progressPercent}%`;
+}
+
+// Set progress bar
+function setProgress(e) {
+  const width = this.clientWidth;
+  const clickX = e.offsetX;
+  const duration = audio.duration;
+
+  audio.currentTime = (clickX / width) * duration;
+}
+
+//get duration & currentTime for Time of song
+function DurTime (e) {
+	const {duration,currentTime} = e.srcElement;
+	var sec;
+	var sec_d;
+
+	// define minutes currentTime
+	let min = (currentTime==null)? 0:
+	 Math.floor(currentTime/60);
+	 min = min <10 ? '0'+min:min;
+
+	// define seconds currentTime
+	function get_sec (x) {
+		if(Math.floor(x) >= 60){
+			
+			for (var i = 1; i<=60; i++){
+				if(Math.floor(x)>=(60*i) && Math.floor(x)<(60*(i+1))) {
+					sec = Math.floor(x) - (60*i);
+					sec = sec <10 ? '0'+sec:sec;
+				}
+			}
+		}else{
+		 	sec = Math.floor(x);
+		 	sec = sec <10 ? '0'+sec:sec;
+		 }
+	} 
+
+	get_sec (currentTime,sec);
+
+	// change currentTime DOM
+	currTime.innerHTML = min +':'+ sec;
+
+	// define minutes duration
+	let min_d = (isNaN(duration) === true)? '0':
+		Math.floor(duration/60);
+	 min_d = min_d <10 ? '0'+min_d:min_d;
+
+
+	 function get_sec_d (x) {
+		if(Math.floor(x) >= 60){
+			
+			for (var i = 1; i<=60; i++){
+				if(Math.floor(x)>=(60*i) && Math.floor(x)<(60*(i+1))) {
+					sec_d = Math.floor(x) - (60*i);
+					sec_d = sec_d <10 ? '0'+sec_d:sec_d;
+				}
+			}
+		}else{
+		 	sec_d = (isNaN(duration) === true)? '0':
+		 	Math.floor(x);
+		 	sec_d = sec_d <10 ? '0'+sec_d:sec_d;
+		 }
+	} 
+
+	// define seconds duration
 	
-	let slides = slidesPerPage();
-	let pageSeq_ = { 2: [ 1, 2, 1 ], 3: [ 1, 2, 1 / 3 ], 4: [ 1, 1, 0 ] };
-	let pageSeq = pageSeq_[slides] || pageSeq_[4];
-	let slideSeq_ = { 2: [ 2, 4, 3 ], 3: [ 3, 6, 2 ], 4: [ 3, 6, 2 ] };
-	let slideSeq = slideSeq_[slides] || slideSeq_[2];
-	await sleep(300);
-	goToPage(pageSeq[0]);
-	await sleep(500);
-	hoverSlide(slideSeq[0]);
-	await sleep(1200);
-	goToPage(pageSeq[1]);
-	dribbble.classList.add('hover');
-	unhoverSlide(slideSeq[0]);
-	await sleep(500);
-	hoverSlide(slideSeq[1]);
-	await sleep(1200);
-	goToPage(pageSeq[2]);
-	unhoverSlide(slideSeq[1]);
-	await sleep(300);
-	hoverSlide(slideSeq[2]);
-	await sleep(1600);
-	goToPage(0);
-	unhoverSlide(slideSeq[2]);
-	dribbble.classList.remove('hover');
-	currentlyDemoing = false;
-}
+	get_sec_d (duration);
 
-next.forEach(n => n.addEventListener('click', () => !currentlyDemoing && goToPage(currentPage + 1)));
-prev.forEach(n => n.addEventListener('click', () => !currentlyDemoing && goToPage(currentPage - 1)));
-menu.addEventListener('click', demo);
+	// change duration DOM
+	durTime.innerHTML = min_d +':'+ sec_d;
+		
+};
+
+// Event listeners
+playBtn.addEventListener('click', () => {
+  const isPlaying = musicContainer.classList.contains('play');
+
+  if (isPlaying) {
+    pauseSong();
+  } else {
+    playSong();
+  }
+});
+
+// Change song
+prevBtn.addEventListener('click', prevSong);
+nextBtn.addEventListener('click', nextSong);
+
+// Time/song update
+audio.addEventListener('timeupdate', updateProgress);
+
+// Click on progress bar
+progressContainer.addEventListener('click', setProgress);
+
+// Song ends
+audio.addEventListener('ended', nextSong);
+
+// Time of song
+audio.addEventListener('timeupdate',DurTime);
+
 
 
 
