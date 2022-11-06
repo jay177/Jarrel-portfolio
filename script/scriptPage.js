@@ -1,10 +1,14 @@
 console.clear();
+
+// selectionne l'élement qui a pour id app
 const elApp = document.querySelector("#app");
 
 // What we need...
 // Mouse position
 // Currently hovered item
 
+
+// eccoute la page sur l'élément body sur l'évenemnt bouger la sourie
 document.body.addEventListener("mousemove", (event) => {
   console.log({
     x: event.clientX,
@@ -15,11 +19,3 @@ document.body.addEventListener("mousemove", (event) => {
   elApp.style.setProperty("--y", event.clientY);
 });
 
-// Replay animation by hiding & showing the element again
-let el = document.body;
-el.addEventListener("click", function (e) {
-  el.hidden = true;
-  requestAnimationFrame(() => {
-    el.hidden = false;
-  });
-});

@@ -305,19 +305,19 @@ html {
 .first img {
   position: relative;
   top: 100px;
-  left: 10%;
-  width: 600px;
+  left: 5%;
+  width: 500px;
   height: 600px;
 }
 @media screen and (max-width: 768px) {
   .first img {
-    width: 300px;
+    width: 200px;
     height: 300px;
   }
 }
 @media screen and (max-width: 400px) {
   .first img {
-    width: 150px;
+    width: 50px;
     height: 150px;
     top: 100px;
     left: 9%;
@@ -328,7 +328,7 @@ html {
   z-index: 2;
   width: 600px;
   top: 500px;
-  left: 15%;
+  left: 5%;
   height: fit-content;
 }
 @media screen and (max-width: 768px) {
