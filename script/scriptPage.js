@@ -1,53 +1,25 @@
-$(document).ready(function () {
-  var curPage = 1;
-  var numOfPages = $(".skw-page").length;
-  var animTime = 1000;
-  var scrolling = false;
-  var pgPrefix = ".skw-page-";
+console.clear();
+const elApp = document.querySelector("#app");
 
-  function pagination() {
-    scrolling = true;
+// What we need...
+// Mouse position
+// Currently hovered item
 
-    $(pgPrefix + curPage)
-      .removeClass("inactive")
-      .addClass("active");
-    $(pgPrefix + (curPage - 1)).addClass("inactive");
-    $(pgPrefix + (curPage + 1)).removeClass("active");
-
-    setTimeout(function () {
-      scrolling = false;
-    }, animTime);
-  }
-
-  function navigateUp() {
-    if (curPage === 1) return;
-    curPage--;
-    pagination();
-  }
-
-  function navigateDown() {
-    if (curPage === numOfPages) return;
-    curPage++;
-    pagination();
-  }
-
-  $(document).on("mousewheel DOMMouseScroll", function (e) {
-    if (scrolling) return;
-    if (e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0) {
-      navigateUp();
-    } else {
-      navigateDown();
-    }
+document.body.addEventListener("mousemove", (event) => {
+  console.log({
+    x: event.clientX,
+    y: event.clientY
   });
 
-  $(document).on("keydown", function (e) {
-    if (scrolling) return;
-    if (e.which === 38) {
-      navigateUp();
-    } else if (e.which === 40) {
-      navigateDown();
-    }
-  });
+  elApp.style.setProperty("--x", event.clientX);
+  elApp.style.setProperty("--y", event.clientY);
 });
 
-
+// Replay animation by hiding & showing the element again
+let el = document.body;
+el.addEventListener("click", function (e) {
+  el.hidden = true;
+  requestAnimationFrame(() => {
+    el.hidden = false;
+  });
+});
