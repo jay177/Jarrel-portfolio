@@ -17,3 +17,5 @@ i setup checky for automaticly update my website when i commit something
 i also setup code factor that check code error like duplicated code 
 and gitBook whit this i can make a doc like a book 
 
+je n'ai pas ajouter de richt snipet par car je n'en trouve pas de ppertinent pour moi a l'instant T 
+
