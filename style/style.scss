@@ -306,30 +306,71 @@ html {
 
 
 .first{
-  height: 300vh;
+  height: 100vh;
   display: flex;
   background: #282F33;
   img{
     position: relative;
-    top: 250px;
-    left: 25%;
-    width: 200px;
-    height: 200px;
+    top: 100px;
+    left: 10%;
+    width: 600px;
+    height: 600px;
+    @media screen and (max-width: 768px){
+      width: 300px;
+      height: 300px;
+      
+
+
+    }
+    @media screen and (max-width: 400px){
+      width: 150px;
+      height: 150px;
+      top: 100px;
+      left: 9%;
+      
+
+
+    }
   }
   .firstxt{
     position: relative;
     z-index: 2;
-    width: 400px;
-    top: 400px;
-    left: 25%;
+    width: 600px;
+    top: 500px;
+    left: 15%;
+    height: fit-content;
+    @media screen and (max-width: 768px) {
+      position: relative;
+      z-index: 2;
+      width: 300px;
+      top: 25%;
+      left: 15%;
+      max-height: 400px;
+     }
+     @media screen and (max-width: 400px){
+      left: 2%;
+      top: 15%;
+      width: 200px;
+      
+
+
+    }
   
     h2{
-      color: #000;
+      color: #9FBBCC;
       opacity: 1;
+      text-align: center;
+    }
+    p{
+      color:#9FBBCC;
+      text-align: center;
     }
   }
+  
 }
 
+
+/**/
 
 .H1{
   display: flex;
